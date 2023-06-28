@@ -50,7 +50,6 @@ def get_dataframes():
     'negative': 0,
     'neutral': 1,
     'positive': 2
-null
   }
   dublin_test_df['polarity'] = dublin_test_df['polarity'].map(mapping_polarity)
   dublin_test_df = dublin_test_df.drop(dublin_test_df[dublin_test_df.polarity == 2].index).reset_index()
