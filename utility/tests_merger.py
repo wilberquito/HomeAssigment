@@ -13,4 +13,6 @@ def merge(directory):
 
     # Concatenate the dataframes
     merged_df = pd.concat(dfs)
+    merged_df.set_index(dfs.iloc[:, 0], inplace=True)
+    merged_df.drop(columns=merged_df.columns[0], axis=1, inplace=True)
     return merged_df
