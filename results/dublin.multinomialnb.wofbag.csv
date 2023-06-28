@@ -1,0 +1,2 @@
+,precision,recall_score,f1_score,accuracy_score
+dublin.multinomialnb.wofbag,0.848,0.797,0.822,0.825

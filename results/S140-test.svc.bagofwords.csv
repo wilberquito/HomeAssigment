@@ -1,0 +1,2 @@
+,precision,recall_score,f1_score,accuracy_score
+S140-test.svc.bagofwords,0.79,0.89,0.837,0.825
