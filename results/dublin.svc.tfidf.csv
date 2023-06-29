@@ -1,2 +1,2 @@
 ,precision,recall_score,f1_score,accuracy_score
-dublin.svc.tfidf,0.759,0.885,0.817,0.799
+dublin.svc.tfidf,0.652,0.732,0.69,0.67

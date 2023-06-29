@@ -1,2 +1,2 @@
 ,precision,recall_score,f1_score,accuracy_score
-S140-test.multinomialnb.tfidf,0.848,0.797,0.822,0.825
+S140-test.multinomialnb.tfidf,0.842,0.764,0.801,0.808
