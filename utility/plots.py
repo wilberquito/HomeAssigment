@@ -27,7 +27,7 @@ def wordcloud(train_df):
     plt.show()
 
 # Wordcloud with negative tweets
-    negative_tweets = df['tweet'][df["polarity"] == 0]
+    negative_tweets = df['text'][df["polarity"] == 0]
     stop_words = ["https", "co", "RT"] + list(STOPWORDS)
     negative_wordcloud = WordCloud(max_font_size=50, max_words=50, background_color="white", stopwords = stop_words).generate(str(negative_tweets))
     plt.figure()
