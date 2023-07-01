@@ -1,7 +1,7 @@
 
 import torch
 from torch import LongTensor
-from torch.utils.data import TensorDataset
+from torch.utils.data import TensorDataset, Dataset 
 from sklearn.model_selection import train_test_split
 import numpy as np
 import pandas as pd
