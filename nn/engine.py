@@ -2,7 +2,7 @@ from sklearn.metrics import f1_score, accuracy_score
 from tqdm.notebook import tqdm
 
 
-def train(model, dataloader, num_epochs, device):
+def train(model, dataloader, optimizer, num_epochs, device):
     """Train loop"""
 
     for epoch in tqdm(range(num_epochs)):
