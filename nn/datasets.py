@@ -6,10 +6,47 @@ from sklearn.model_selection import train_test_split
 import numpy as np
 import pandas as pd
 
+
+class TwitterDataset(Dataset):
+    """Simple dataset to process text that will
+    be handled by a transfomer"""
+    
+    def __init__(self, df, tokenizer, max_length):
+      
+        self.texts = df['text'].values
+        self.labels = df['polarity'].values
+        self.tokenizer = tokenizer
+        self.max_length = max_length
+
+    def __len__(self):
+        return len(self.labels)
+
+    def __getitem__(self, index):
+        text = str(self.texts[index])
+        label = self.labels[index]
+        encoding = self.tokenizer.encode_plus(
+            text,
+            add_special_tokens=True,
+            truncation=True,
+            padding='max_length',
+            max_length=self.max_length,
+            return_tensors='pt'
+        )
+        return {
+            'input_ids': encoding['input_ids'].flatten(),
+            'attention_mask': encoding['attention_mask'].flatten(),
+            'labels': torch.tensor(label, dtype=torch.long)
+        }
+
+
+
 def train_valid_datasets(train_df: pd.DataFrame,
                          preprocessor,
                          validate_size=0.2,
                          random_state=42):
+    """Another aprouch to generate tran test datasets. But this
+    time instead of using the transfomers api I do it by transforming
+    the text into bofw or tfidf"""
 
 
     X, y = train_df[['text']], train_df['polarity']
