@@ -4,6 +4,7 @@ from torch import LongTensor
 from torch.utils.data import TensorDataset
 from sklearn.model_selection import train_test_split
 import numpy as np
+import pandas as pd
 
 def train_valid_datasets(train_df: pd.DataFrame,
                          preprocessor,
