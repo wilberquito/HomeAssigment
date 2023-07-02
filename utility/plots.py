@@ -14,17 +14,17 @@ def grouped_bar(merged_df):
       name = name.replace('dublin.', '')
       return name
 
-    kinds = ['dublin' if 'dublin' in model else 'test' for model in list(merged_df.index)]
+    tests = ['dublin' if 'dublin' in model else 'test' for model in list(merged_df.index)]
     names = [replacer(name) for name in list(merged_df.index)]
 
     results = merged_df.copy()
-    results['kind'] = kinds
+    results['test'] = tests
     results['name'] = names
 
     # Draw a nested barplot by species and sex
     g = sns.catplot(
-        data=results, kind="kind",
-        x="name", y="accuracy_score", hue="name", 
+        data=results, kind="bar",
+        x="name", y="accuracy_score", hue="test", 
         palette="dark", alpha=.6, height=6)
     g.despine(left=True)
     g.set_axis_labels("", "Accuracy")
