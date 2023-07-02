@@ -7,7 +7,7 @@ import seaborn as sns
 sns.set_theme(style="whitegrid")
 
 
-def grouped_bar(results_df)
+def grouped_bar(merged_df)
 
     def replacer(name):
       name = name.replace('S140-test.', '')
