@@ -1,5 +1,6 @@
 from sklearn.metrics import f1_score, accuracy_score
 from tqdm.notebook import tqdm
+import torch
 
 
 def train(model, dataloader, optimizer, num_epochs, device):
