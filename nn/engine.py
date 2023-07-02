@@ -69,6 +69,6 @@ def test(model, dataloader, device):
 
     average_test_loss = eval_loss / len(dataloader)
     test_accuracy = accuracy_score(true_labels, predicted_labels)
-    train_f1 = f1_score(true_labels, predicted_labels)
+    test_f1_score = f1_score(true_labels, predicted_labels)
 
-    print(f'Test Loss: {average_test_loss:.4f}, Test Accuracy: {test_accuracy:.4f}, Test F1 Score: {test_f1:.4f}')
+    print(f'Test Loss: {average_test_loss:.4f}, Test Accuracy: {test_accuracy:.4f}, Test F1 Score: {test_f1_score:.4f}')
