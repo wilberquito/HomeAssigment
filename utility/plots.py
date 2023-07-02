@@ -3,11 +3,12 @@ import sklearn.metrics as metrics
 from wordcloud import WordCloud
 from wordcloud import STOPWORDS
 
+import matplotlib.pyplot as plt
 import seaborn as sns
 sns.set_theme(style="whitegrid")
 
 
-def grouped_bar(merged_df):
+def grouped_bar(merged_df, metric):
 
     def replacer(name):
       name = name.replace('S140-test.', '')
@@ -24,11 +25,16 @@ def grouped_bar(merged_df):
     # Draw a nested barplot by species and sex
     g = sns.catplot(
         data=results, kind="bar",
-        x="name", y="accuracy_score", hue="test", 
+        x="name", y=metric, hue="test", 
         palette="dark", alpha=.6, height=6)
     g.despine(left=True)
+     
     g.set_axis_labels("", "Accuracy")
     g.legend.set_title("")
+
+    ax = g.ax
+    ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
+    plt.show()
 
 
 def confusion_matrix(y_test, y_pred, classes):
