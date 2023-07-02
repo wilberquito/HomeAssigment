@@ -1,6 +1,7 @@
 from sklearn.metrics import f1_score, accuracy_score
 from tqdm.notebook import tqdm
 import torch
+from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score
 
 
 def train(model, dataloader, optimizer, num_epochs, device):
@@ -10,8 +11,8 @@ def train(model, dataloader, optimizer, num_epochs, device):
         model.train()
 
         train_loss = 0.0
-        predicted_labels = []
-        true_labels = []
+        y_pred = []
+        y_test = []
 
         for batch in tqdm(dataloader):
             input_ids = batch['input_ids'].to(device)
@@ -25,15 +26,15 @@ def train(model, dataloader, optimizer, num_epochs, device):
             train_loss += loss.item()
 
             batch_predicted_labels = outputs.logits.argmax(dim=1)
-            predicted_labels.extend(batch_predicted_labels.tolist())
-            true_labels.extend(labels.tolist())
+            y_pred.extend(batch_predicted_labels.tolist())
+            y_test.extend(labels.tolist())
 
             loss.backward()
             optimizer.step()
 
         average_train_loss = train_loss / len(dataloader)
-        train_accuracy = accuracy_score(true_labels, predicted_labels)
-        train_f1 = f1_score(true_labels, predicted_labels)
+        train_accuracy = accuracy_score(y_test, y_pred)
+        train_f1 = f1_score(y_test, y_pred)
 
         print(f'Epoch {epoch + 1}/{num_epochs}, Training Loss: {average_train_loss:.4f}, Training Accuracy: {train_accuracy:.4f}, Training F1 Score: {train_f1:.4f}')
 
@@ -47,8 +48,8 @@ def test(model, dataloader, device):
     ground_truth = []
 
     train_loss = 0.0
-    predicted_labels = []
-    true_labels = []
+    y_pred = []
+    y_test = []
 
     with torch.no_grad():
         for batch in tqdm(dataloader):
@@ -63,18 +64,18 @@ def test(model, dataloader, device):
             eval_loss += loss.item()
 
             batch_predicted_labels = outputs.logits.argmax(dim=1)
-            predicted_labels.extend(batch_predicted_labels.tolist())
-            true_labels.extend(labels.tolist())
+            y_pred.extend(batch_predicted_labels.tolist())
+            y_test.extend(labels.tolist())
 
 
-    average_test_loss = eval_loss / len(dataloader)
-    test_accuracy = accuracy_score(true_labels, predicted_labels)
-    test_f1_score = f1_score(true_labels, predicted_labels)
-
-    print(f'Test Loss: {average_test_loss:.4f}, Test Accuracy: {test_accuracy:.4f}, Test F1 Score: {test_f1_score:.4f}')
+    precision_ = [round(precision_score(y_test, y_pred), 3)]
+    recall_score_ = [round(recall_score(y_test, y_pred), 3)]
+    f1_score_ = [round(f1_score(y_test, y_pred), 3)]
+    accuracy_score_ = [round(accuracy_score(y_test, y_pred), 3)]
 
     return {
-            'loss': average_test_loss,
-            'accuracy': test_accuracy,
-            'f1_score': test_f1_score
+            'precision': precision_,
+            'recall_score': recall_score_,
+            'accuracy_score': accuracy_score_,
+            'f1_score': f1_score_
             } 
