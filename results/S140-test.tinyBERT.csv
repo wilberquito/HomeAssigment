@@ -1,2 +1,2 @@
-,loss,accuracy,f1_score
-S140-test.tinyBERT,0.3845202624797821,0.8272980501392758,0.8324324324324325
+,precision,recall_score,accuracy_score,f1_score
+S140-test.tinyBERT,0.819,0.846,0.827,0.832

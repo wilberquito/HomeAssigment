@@ -1,2 +1,2 @@
-,loss,accuracy,f1_score
-dublin.tinyBERT,0.5747467875480652,0.695,0.6965174129353233
+,precision,recall_score,accuracy_score,f1_score
+dublin.tinyBERT,0.693,0.7,0.695,0.697
