@@ -29,7 +29,7 @@ def grouped_bar(merged_df, metric):
         palette="dark", alpha=.6, height=6)
     g.despine(left=True)
      
-    g.set_axis_labels("", "Accuracy")
+    g.set_axis_labels("", metric)
     g.legend.set_title("")
 
     ax = g.ax
