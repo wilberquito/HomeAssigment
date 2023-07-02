@@ -63,8 +63,8 @@ def test(model, dataloader, device):
             eval_loss += loss.item()
 
             batch_predicted_labels = outputs.logits.argmax(dim=1)
-            predicted_labels = predicted_labels.extend(batch_predicted_labels.tolist())
-            true_labels = true_labels.extend(labels.tolist())
+            predicted_labels.extend(batch_predicted_labels.tolist())
+            true_labels.extend(labels.tolist())
 
 
     average_test_loss = eval_loss / len(dataloader)
