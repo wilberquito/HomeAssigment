@@ -72,3 +72,9 @@ def test(model, dataloader, device):
     test_f1_score = f1_score(true_labels, predicted_labels)
 
     print(f'Test Loss: {average_test_loss:.4f}, Test Accuracy: {test_accuracy:.4f}, Test F1 Score: {test_f1_score:.4f}')
+
+    return {
+            'loss': average_test_loss,
+            'accuracy': test_accuracy,
+            'f1_score': test_f1_score
+            } 
