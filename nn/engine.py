@@ -51,7 +51,7 @@ def test(model, dataloader, device):
     true_labels = []
 
     with torch.no_grad():
-        for batch in tqdm(test_loader):
+        for batch in tqdm(dataloader):
             input_ids = batch['input_ids'].to(device)
             attention_mask = batch['attention_mask'].to(device)
             labels = batch['labels'].to(device)
