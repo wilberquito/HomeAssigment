@@ -34,7 +34,7 @@ def train(model, dataloader, optimizer, num_epochs, device):
         train_accuracy = accuracy_score(true_labels, predicted_labels)
         train_f1 = f1_score(true_labels, predicted_labels)
 
-    print(f'Epoch {epoch + 1}/{num_epochs}, Training Loss: {average_train_loss:.4f}, Training Accuracy: {train_accuracy:.4f}, Training F1 Score: {train_f1:.4f}')
+        print(f'Epoch {epoch + 1}/{num_epochs}, Training Loss: {average_train_loss:.4f}, Training Accuracy: {train_accuracy:.4f}, Training F1 Score: {train_f1:.4f}')
 
 
 def test(model, dataloader, device):
