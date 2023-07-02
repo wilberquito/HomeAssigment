@@ -24,8 +24,8 @@ def train(model, dataloader, optimizer, num_epochs, device):
             train_loss += loss.item()
 
             batch_predicted_labels = outputs.logits.argmax(dim=1)
-            predicted_labels = predicted_labels.extend(batch_predicted_labels.tolist())
-            true_labels = true_labels.extend(labels.tolist())
+            predicted_labels.extend(batch_predicted_labels.tolist())
+            true_labels.extend(labels.tolist())
 
             loss.backward()
             optimizer.step()
