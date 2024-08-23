@@ -4,3 +4,10 @@ numpy
 kaggle
 opendatasets
 matplotlib
+notebook
+transformers
+transformers[torch]
+datasets
+evaluate
+rouge_score
+scikit-learn
