@@ -11,3 +11,5 @@ datasets
 evaluate
 rouge_score
 scikit-learn
+python-dotenv
+ipywidgets
